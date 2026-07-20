@@ -1,7 +1,8 @@
 # Omarchy Audio Switcher
 
-A small Bash utility for fast, explicit switching between a headset and
-speakers on an Omarchy desktop using PipeWire, WirePlumber, and `wpctl`.
+A small Bash utility for fast, explicit switching between paired headset and
+speaker audio setups on an Omarchy desktop using PipeWire, WirePlumber, and
+`wpctl`. Each setup includes both an output and a microphone.
 
 It uses stable PipeWire node names for configuration. Numeric object IDs are
 resolved at runtime and are never stored or hard-coded.
@@ -15,9 +16,10 @@ audio toggle
 audio status
 ```
 
-`audio status` prints `Headset`, `Speakers`, or `Unknown`. Successful switches
-show a desktop notification when `notify-send` is available. Missing or powered
-off devices produce a helpful error and a non-zero exit status.
+`audio status` prints `Headset` or `Speakers` when both defaults match the
+configured pair, and `Unknown` when they do not. Successful switches show a
+desktop notification when `notify-send` is available. Missing or powered-off
+outputs or microphones produce a helpful error and a non-zero exit status.
 
 ## Requirements
 
@@ -42,7 +44,7 @@ Make sure `~/.local/bin` is in your `PATH`.
 
 ## Configure
 
-Find the stable names of your sinks:
+Find the stable names of your sinks and sources:
 
 ```bash
 wpctl status --name
@@ -55,9 +57,10 @@ install -Dm644 config.example ~/.config/audio-switcher/config
 ${EDITOR:-nano} ~/.config/audio-switcher/config
 ```
 
-You can instead set `AUDIO_HEADSET_SINK` and `AUDIO_SPEAKERS_SINK` environment
-variables. Environment variables take precedence over the configuration file.
-Set `AUDIO_SWITCHER_CONFIG` to use a different configuration path.
+You can instead set the `AUDIO_HEADSET_SINK`, `AUDIO_HEADSET_SOURCE`,
+`AUDIO_SPEAKERS_SINK`, and `AUDIO_SPEAKERS_SOURCE` environment variables.
+Environment variables take precedence over the configuration file. Set
+`AUDIO_SWITCHER_CONFIG` to use a different configuration path.
 
 ## Hyprland bindings
 
