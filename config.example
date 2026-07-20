@@ -1,3 +1,5 @@
 # Find these names with: wpctl status --name
 HEADSET_SINK='alsa_output.usb-SteelSeries_Arctis_7P_-00.analog-stereo'
 SPEAKERS_SINK='alsa_output.pci-0000_c1_00.1.hdmi-stereo-extra3'
+HEADSET_SOURCE='alsa_input.usb-SteelSeries_Arctis_7P_-00.mono-fallback'
+SPEAKERS_SOURCE='alsa_input.usb-046d_HD_Pro_Webcam_C920_724A625F-02.analog-stereo'
